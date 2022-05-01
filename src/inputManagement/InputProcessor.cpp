@@ -1,6 +1,7 @@
 #include "include/InputProcessor.hpp"
 #include <iostream>
 #include <sstream>
+#include <fstream>
 using namespace std;
 
 InputProcessor::InputProcessor() {
@@ -82,6 +83,7 @@ void InputProcessor::executeCommand(vector<string>& commandSegments) {
                 cout << ", ";
             }
         }
+        cout << endl;
     } else {
         cout << "Invalid command, try again!" << endl;
     }
@@ -99,5 +101,29 @@ void InputProcessor::processInteractiveInput() {
 }
 
 void InputProcessor::processFileInput() {
-    cout << "In File Input" << endl;
+    string line;
+    ifstream filestream(filename);
+    vector<string> commands;
+    if(filestream.is_open()) {
+        while(getline(filestream, line)) {
+            commands.push_back(line);
+        }
+        filestream.close();
+    } else {
+        cout << "Error! File: " << filename << " does not exist!" << endl;
+        return;
+    }
+    cout << "Input (contents of file):" << endl;
+    for(string command: commands) {
+        cout << command << endl;
+    }
+    cout << "Output (to STDOUT):" << endl;
+    for(string command: commands) {
+        vector<string> commandSegments = processCommand(command);
+        if(command == "exit") {
+            break;
+        }
+        executeCommand(commandSegments);
+    }
+    
 }

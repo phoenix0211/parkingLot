@@ -7,7 +7,7 @@ int main(int argc, char** argv) {
 		InputProcessor ip;
 		ip.processInteractiveInput();
 	} else {
-		std::string filename(argv[0]);
+		std::string filename(argv[1]);
 		InputProcessor ip(filename);
 		ip.processFileInput();
 	}
