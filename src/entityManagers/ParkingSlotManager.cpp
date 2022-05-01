@@ -48,12 +48,13 @@ bool ParkingSlotManager::unpark(int slotId) {
     if(isEmpty()) {
         return false;
     }
-    if(slots[slotId].isFree()) {
+    // slotId is one more than actual indices of slots in the array
+    if(slots[slotId-1].isFree()) {
         return false;
     }
-    slots[slotId].setFree();
+    slots[slotId-1].setFree();
     --numberOfParkedCars;
-    currentSlot = slots[currentSlot].isFree() && currentSlot < slotId ? currentSlot : slotId;
+    currentSlot = slots[currentSlot].isFree() && currentSlot < slotId-1 ? currentSlot : slotId-1l;
     return true;
 }
 

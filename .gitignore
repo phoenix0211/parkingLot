@@ -1,2 +1,4 @@
 .vscode/
-output/
+*.o
+bin/parking_lot
+

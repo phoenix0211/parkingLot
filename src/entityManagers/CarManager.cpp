@@ -26,3 +26,7 @@ vector<string> CarManager::getRegistrationNumbersOfCarsByColor(string color) {
     }
     return registrationNumbers;
 }
+
+Car CarManager::getCar(string registrationNumber) {
+    return cars[registrationNumber];
+}

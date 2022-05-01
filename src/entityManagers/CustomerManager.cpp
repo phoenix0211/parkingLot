@@ -23,3 +23,17 @@ void CustomerManager::assignTicketToCustomer(int customerId, int ticketId) {
 int CustomerManager::takeTicketFromCustomer(int customerId) {
     return customers[customerId].returnTicket();
 }
+
+Customer CustomerManager::getCustomer(int customerId) {
+    return customers[customerId];
+}
+
+Customer CustomerManager::getCustomerByCarRegistrationNumber(string registrationNumber) {
+    for(auto it = customers.begin(); it != customers.end(); ++it) {
+        if(it->second.getCarRegistrationNumber() == registrationNumber) {
+            return it->second;
+        }
+    }
+    Customer dummyCustomer("NotFound");
+    return dummyCustomer;
+}

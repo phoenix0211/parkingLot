@@ -15,5 +15,7 @@ class TicketManager {
     int createTicket(int customerId, int slotId);
     bool removeTicket(int slotId);
 
+    Ticket getTicket(int slotId);
     vector<Ticket> getAllTickets();
+    Ticket getTicketByCustomerId(int customerId);
 };

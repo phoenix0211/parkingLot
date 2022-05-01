@@ -17,4 +17,5 @@ class CarManager {
     bool removeCar(string registrationNumber);
 
     vector<string> getRegistrationNumbersOfCarsByColor(string color);
+    Car getCar(string registrationNumber);
 };

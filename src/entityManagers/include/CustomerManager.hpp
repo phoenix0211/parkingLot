@@ -16,4 +16,7 @@ class CustomerManager {
 
     void assignTicketToCustomer(int customerId, int ticketId);
     int takeTicketFromCustomer(int customerId);
+
+    Customer getCustomer(int customerId);
+    Customer getCustomerByCarRegistrationNumber(string registrationNumber);
 };

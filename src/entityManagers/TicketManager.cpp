@@ -15,6 +15,20 @@ bool TicketManager::removeTicket(int slotId) {
     return true;
 }
 
+Ticket TicketManager::getTicket(int slotId) {
+    return tickets.find(slotId)->second;
+}
+
+Ticket TicketManager::getTicketByCustomerId(int customerId) {
+    for(auto it = tickets.begin(); it != tickets.end(); ++it) {
+        if(it->second.getCustomerId() == customerId) {
+            return it->second;
+        }
+    }
+    Ticket dummyTicket(-1, -1);
+    return dummyTicket;
+}
+
 vector<Ticket> TicketManager::getAllTickets() {
     vector<Ticket> vec;
     for(auto it = tickets.begin(); it != tickets.end(); ++it) {
